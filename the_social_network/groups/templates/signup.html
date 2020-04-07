@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+
+{% block body %}
+<h2>Sign Up</h2>
+<br>
+
+
+{% if message %}
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+
+<br>
+
+<form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    <input name="username" type="text"/>
+    <input name="password" type="password"/>
+    <input type="submit" value="Sign Up"/>
+</form>
+{% endblock %}

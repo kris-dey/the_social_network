@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Groups
+{% endblock %}
+
+{% block body %}
+    <h1>Groups</h1>
+
+    {% for group in groups %}
+        <li>
+            <a href="{% url 'group' group.id %}">
+                {{ group.group_name }}
+            </a>
+        </li>
+    {% endfor %}
+
+    <h5>Currently logged in as: {{ user.username }}
+    <a href="{% url 'logout' %}">Logout</a></h5>
+
+{% endblock %}

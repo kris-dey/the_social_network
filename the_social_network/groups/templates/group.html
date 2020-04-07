@@ -1,0 +1,39 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Group: {{ group.group_name }}
+{% endblock %}
+
+{% block body %}
+    <h1>Group: {{ group.group_name }}</h1> 
+
+    <br>
+
+    <form action="{% url 'submit_post' group.id %}" method="post">
+        {% csrf_token %}
+        <input name="post_text" type="text"/>
+        <input type="submit" value="Post" />
+    </form>
+
+    <br>
+
+    <h2>Posts:</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                {{ post.text }}
+                <br>
+                Posted by: {{ post.author }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Members:</h2>
+    <ul>
+        {% for member in members %}
+            <li>
+                {{ member.username }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
