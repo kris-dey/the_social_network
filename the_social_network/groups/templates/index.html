@@ -15,7 +15,10 @@
         </li>
     {% endfor %}
 
-    <h5>Currently logged in as: {{ user.username }}
-    <a href="{% url 'logout' %}">Logout</a></h5>
+    <h5>Currently logged in as: {{ user.username }} {% if admin_logged_in %} (ADMIN){% endif %}</h5>
+    {% if admin_logged_in %}
+        <h5> <a href="{% url 'admin_settings' %}">Admin settings (create groups and add members to groups)</a> <h5>
+    {% endif %}
+    <h5><a href="{% url 'logout' %}">Logout</a></h5>
 
 {% endblock %}

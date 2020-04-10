@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+
+{% block body %}
+<h2>Admin Settings</h2>
+
+{% if message %}
+    <br>
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+
+<h3><b>Create A New Group</b></h3>
+<form action="{% url 'create_group' %}" method="post">
+    {% csrf_token %}
+    <label>Group Name: </label><input name="new_group_name" type="text"/> &nbsp;
+    <input type="submit" value="Create new group!"/>
+</form>
+
+<h3><b>Add Users to group</b></h3>
+<form action="{% url 'add_users_to_group' %}" method="post">
+    {% csrf_token %}
+    <label>Group Name: </label><input name="group_name" type="text"/><br><br>
+    <label>User to be added: </label><input name="user_to_add" type="text"/><br><br>
+    <input type="submit" value="Add user to group!"/>
+</form>
+
+{% endblock %}

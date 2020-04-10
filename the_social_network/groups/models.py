@@ -15,6 +15,8 @@ class Post(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=64)
     password = models.CharField(max_length=256)
+    staff_status = models.BooleanField(default=False)
+    admin_logged_in = models.BooleanField(default=False)
     
     def __str__(self):
         return f"{self.username}"
@@ -28,8 +30,9 @@ class User(models.Model):
 
 class Group(models.Model):
     group_name = models.CharField(max_length=64)
-    posts = models.ManyToManyField(Post, related_name="group")
+    posts = models.ManyToManyField(Post, related_name="group", null=True)
     members = models.ManyToManyField(User, related_name="group")
+    group_encryption_key = models.CharField(max_length=256, default="")
 
     def __str__(self):
         return f"{self.group_name}"

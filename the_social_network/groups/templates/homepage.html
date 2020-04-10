@@ -7,6 +7,7 @@
 {% block body %}
 
 {% if message %}
+    <br>
     <div>
         {{ message }}
     </div>
@@ -15,12 +16,16 @@
 {% endif %}
 
 
+{%if not user_logged_in %}
+    <a href="http://127.0.0.1:8000/login">Login</a>
 
-<a href="http://127.0.0.1:8000/login">Login</a>
+    &nbsp;&nbsp;
 
-&nbsp;
+    <a href="http://127.0.0.1:8000/signup">Sign up</a>
 
-<a href="http://127.0.0.1:8000/signup">Sign up</a>
+    <br>
 
+    <a href="http://127.0.0.1:8000/admin_login">Admin Log in</a>
+{% endif %}
 
 {% endblock %}

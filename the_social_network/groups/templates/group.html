@@ -9,6 +9,12 @@
 
     <br>
 
+    {% if message %}
+        <div>
+            {{ message }}
+        </div>
+    {% endif %}
+
     <form action="{% url 'submit_post' group.id %}" method="post">
         {% csrf_token %}
         <input name="post_text" type="text"/>
@@ -36,4 +42,11 @@
             </li>
         {% endfor %}
     </ul>
+    
+    {% if member_in_group %}
+        <div><i> Member in group. </i></div>
+    {% else %}
+        <div><i> Member not in group. </i></div>
+    {% endif %}
+
 {% endblock %}

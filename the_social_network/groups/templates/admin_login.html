@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+
+{% block body %}
+<h2>Admin Login Page</h2>
+<br>
+
+
+{% if message %}
+    <div>
+        {{ message }}
+    </div>
+{% endif %}
+
+<br>
+
+<form action="{% url 'admin_login' %}" method="post">
+    {% csrf_token %}
+    <input name="username2" type="text"/>
+    <input name="password" type="password"/>
+    <input type="submit" value="Login"/>
+</form>
+{% endblock %}
