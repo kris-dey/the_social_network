@@ -14,14 +14,13 @@
             {{ message }}
         </div>
     {% endif %}
-
-    <form action="{% url 'submit_post' group.id %}" method="post">
-        {% csrf_token %}
-        <input name="post_text" type="text"/>
-        <input type="submit" value="Post" />
-    </form>
-
-    <br>
+    {% if member_in_group %}
+        <form action="{% url 'submit_post' group.id %}" method="post">
+            {% csrf_token %}
+            <input name="post_text" type="text"/>
+            <input type="submit" value="Post" />
+        </form>
+    {% endif %}
 
     <h2>Posts:</h2>
     <ul>
@@ -44,9 +43,9 @@
     </ul>
     
     {% if member_in_group %}
-        <div><i> Member in group. </i></div>
+        <div><i> You are a member of this group. Hence, you're seeing the decrypted post text. :)</i></div>
     {% else %}
-        <div><i> Member not in group. </i></div>
+        <div><i> You are not a member of this group. Hence, you're seeing the cipher text instead of the original post text. :(</i></div>
     {% endif %}
 
 {% endblock %}

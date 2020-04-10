@@ -47,7 +47,7 @@ def group(request, group_id):
         decipherer = Fernet(group.group_encryption_key.encode())
         
         for post in posts:
-            post_text = str(decipherer.decrypt(post.text.encode()), 'utf-8' )
+            post_text = str(decipherer.decrypt(post.text.encode()), 'utf-8')
             post = {
                 "text": post_text,
                 "author": post.author,
@@ -172,7 +172,7 @@ def admin_login_handler(request):
             return render(request,'index.html', context)
             #return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request, "login.html", {"message": "Invalid credentials."})
+            return render(request, "admin_login.html", {"message": "Invalid credentials."})
              
     else:
         return render(request,'admin_login.html')
@@ -195,4 +195,25 @@ def create_group(request):
         return render(request,'admin_settings.html')
 
 def add_users_to_group(request):
-    return render(request,'admin_settings.html')
+    if request.method =='POST':
+        username = request.POST.get("username", "")
+        group_name = request.POST.get("group_name", "")
+
+        try:
+            user = User.objects.filter(username=username)
+        except Group.DoesNotExist:
+            raise Http404("No such user exists.")
+
+        try:
+            group = Group.objects.filter(group_name=group_name)
+        except Group.DoesNotExist:
+            raise Http404("No such group exists.")
+        
+        group[0].members.add(user[0])
+        group[0].save()
+        
+        message = "User '" + username + "' has been added to group '" + group_name + "'!"
+ 
+        return render(request,'admin_settings.html', {"message":message})
+    else:
+        return render(request,'admin_settings.html')

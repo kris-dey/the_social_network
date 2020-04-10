@@ -21,7 +21,7 @@
 <form action="{% url 'add_users_to_group' %}" method="post">
     {% csrf_token %}
     <label>Group Name: </label><input name="group_name" type="text"/><br><br>
-    <label>User to be added: </label><input name="user_to_add" type="text"/><br><br>
+    <label>User to be added: </label><input name="username" type="text"/><br><br>
     <input type="submit" value="Add user to group!"/>
 </form>
 
