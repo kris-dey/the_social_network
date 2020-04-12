@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5z$h0qp2oos&+mipmhwz@@g6$$f-sfsxt+v7f^#(&cyv5_qz_y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['the-social-network-42.herokuapp.com']
 
 
 # Application definition
