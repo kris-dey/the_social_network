@@ -1,4 +1,0 @@
-cryptography
-pyhton
-pip
-django
