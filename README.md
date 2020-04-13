@@ -1,9 +1,13 @@
 # the_social_network
 
-To run the app, you first to make sure Python3 and Pip3 are installed.  
+To run the app, you first need to make sure that Python3 and Pip3 are installed.   
+Python3:  
 ```sh
-Python3: sudo apt-get install python3.6  
-Pip3: sudo apt install python3-pip  
+sudo apt-get install python3.6  
+```
+Pip3:  
+```sh
+sudo apt install python3-pip  
 ```  
 Then cd into the directory on your terminal.  
   
