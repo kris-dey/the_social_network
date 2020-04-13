@@ -11,13 +11,13 @@ Pip3:
 sudo apt install python3-pip  
 ```  
   
-Then cd into the directory on your terminal.  
+Then, cd into the directory on your terminal.  
   
 Before running the app, you need to install the dependences. Run the following command:  
 ```sh  
 pip3 install -r requirements.txt  
 ```   
-Now you can run the app locally through this command:  
+Now you can run the app locally with this command:  
 ```sh  
 python3 manage.py runserver  
 ```  
