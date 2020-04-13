@@ -1,16 +1,16 @@
 # the_social_network
 
 To run the app, you first to make sure Python3 and Pip3 are installed.  
-	Python3: sudo apt-get install python3.6  
-	Pip3: sudo apt install python3-pip  
+&nbsp;Python3: sudo apt-get install python3.6  
+&nbsp;Pip3: sudo apt install python3-pip  
   
 Then cd into the directory on your terminal.  
   
 Before running the app, you need to install the dependences. Run the following command:  
-	pip3 install -r requirements.txt  
+&nbsp;pip3 install -r requirements.txt  
   
 Now you can run the app locally through this command:  
-	python3 manage.py runserver  
+&nbsp;python3 manage.py runserver  
   
 Navigate to http://127.0.0.1:8000/ use the web-app  
   
