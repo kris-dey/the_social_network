@@ -30,7 +30,7 @@ class User(models.Model):
 
 class Group(models.Model):
     group_name = models.CharField(max_length=64)
-    posts = models.ManyToManyField(Post, related_name="group", null=True)
+    posts = models.ManyToManyField(Post, related_name="group")
     members = models.ManyToManyField(User, related_name="group")
     group_encryption_key = models.CharField(max_length=256, default="")
 

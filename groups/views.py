@@ -131,6 +131,10 @@ def signup_handler(request):
     username2 = request.POST.get("username", "")
     password = request.POST.get("password", "")
 
+    user = User.objects.filter(username=username2)
+    if user:
+        return render(request, "signup.html", {"message": "Sorry, username is already taken."})
+
     encrypted_password = pbkdf2_sha256.encrypt(password, salt_size=32, rounds=12000)
 
     user = User(username=username2, password=encrypted_password)
