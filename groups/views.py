@@ -208,11 +208,17 @@ def add_users_to_group(request):
         except Group.DoesNotExist:
             raise Http404("No such user exists.")
 
+        if not user:
+            render(request,'admin_settings.html', {"message":"No such user exists."})
+
         try:
             group = Group.objects.filter(group_name=group_name)
         except Group.DoesNotExist:
             raise Http404("No such group exists.")
         
+        if not group:
+            render(request,'admin_settings.html', {"message":"No such group exists."})
+
         group[0].members.add(user[0])
         group[0].save()
         
