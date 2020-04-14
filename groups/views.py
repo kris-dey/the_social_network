@@ -203,21 +203,15 @@ def add_users_to_group(request):
         username = request.POST.get("username", "")
         group_name = request.POST.get("group_name", "")
 
-        try:
-            user = User.objects.filter(username=username)
-        except Group.DoesNotExist:
-            raise Http404("No such user exists.")
+        user = User.objects.filter(username=username)
 
         if not user:
-            render(request,'admin_settings.html', {"message":"No such user exists."})
+            return render(request,'admin_settings.html', {"message":"Sorry, no such user exists."})
 
-        try:
-            group = Group.objects.filter(group_name=group_name)
-        except Group.DoesNotExist:
-            raise Http404("No such group exists.")
+        group = Group.objects.filter(group_name=group_name)
         
         if not group:
-            render(request,'admin_settings.html', {"message":"No such group exists."})
+            return render(request,'admin_settings.html', {"message":"Sorry, no such group exists."})
 
         group[0].members.add(user[0])
         group[0].save()
